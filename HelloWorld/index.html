@@ -39,6 +39,11 @@
         <p v-else>
             out of stock
         </p>
+
+        <p v-if="text.includes('pizza')">
+            The text includes the word 'pizza'
+        </p>
+        <p v-else>The word 'pizza is not found in the text</p>
         
     </div>
 
@@ -51,7 +56,8 @@
                     vueClass: "pinkBG",
                     size: 30,
                     condnrender: false,
-                    condnrendercount: 0
+                    condnrendercount: 0,
+                    text: 'I like taco, pizza, Thai salad and soup'
                 }
             }
         })
