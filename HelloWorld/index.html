@@ -57,6 +57,11 @@
             {{index}}: "{{x.name}}", url: "{{x.url}}"
             <br/>
         </p>
+
+        <p>{{"Total clicks: "+count}}</p>
+        <button v-on:click="count++">Count clicks</button>
+        <br/>
+        
         
     </div>
 
@@ -83,7 +88,8 @@
                     manyFoodItems:[
                         {name: 'Salad', url:'imageforsalad'},
                         {name: 'Cake', url:'imageforcake'}
-                    ]
+                    ],
+                    count:0
 
 
                 }
