@@ -49,6 +49,15 @@
             Div tag with v-show
         </div>
         
+        <ol>
+            <li v-for="x in manyFoodItems">{{x}}</li>
+        </ol>
+        <br/>
+        <p v-for="(x,index) in manyFoodItems">
+            {{index}}: "{{x.name}}", url: "{{x.url}}"
+            <br/>
+        </p>
+        
     </div>
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -62,7 +71,20 @@
                     condnrender: false,
                     condnrendercount: 0,
                     text: 'I like taco, pizza, Thai salad and soup',
-                    showDiv: true
+                    showDiv: true,
+                    manyFoods: [
+                        'Salad',
+                        'Cake',
+                        'Soup',
+                        'Fish',
+                        'Pizza',
+                        'Rice'
+                    ],
+                    manyFoodItems:[
+                        {name: 'Salad', url:'imageforsalad'},
+                        {name: 'Cake', url:'imageforcake'}
+                    ]
+
 
                 }
             }
