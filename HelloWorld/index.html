@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Basics</title>
+    <style>
+        .pinkBG{
+            background-color: lightpink;
+        }
+        #vueClass{
+            color:white;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div v-bind:class = "vueClass">
+            {{message}}
+            <br>
+            {{'Random number: '+Math.ceil(Math.random()*6)}}
+        </div>
+        <div v-bind:style="{fontSize:size + 'px'}">
+            Text Example
+        </div>
+        
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const app = Vue.createApp({
+            data(){
+                return{
+                    message: "Hello World!",
+                    vueClass: "pinkBG",
+                    size: 30
+                }
+            }
+        })
+
+        app.mount('#app')
+    </script>
+</body>
+</html>
