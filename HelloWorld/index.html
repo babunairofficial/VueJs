@@ -44,6 +44,10 @@
             The text includes the word 'pizza'
         </p>
         <p v-else>The word 'pizza is not found in the text</p>
+
+        <div v-show="showDiv">
+            Div tag with v-show
+        </div>
         
     </div>
 
@@ -57,7 +61,9 @@
                     size: 30,
                     condnrender: false,
                     condnrendercount: 0,
-                    text: 'I like taco, pizza, Thai salad and soup'
+                    text: 'I like taco, pizza, Thai salad and soup',
+                    showDiv: true
+
                 }
             }
         })
