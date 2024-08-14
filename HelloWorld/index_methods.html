@@ -37,6 +37,27 @@
         <button v-on:click="addCount(-10)">-10</button>
         <button v-on:click="addCount(-100)">-100</button>
         
+        <div id="tigers">
+            <p>Tigers: {{countTiger}}</p>
+            <button v-on:click="addAnimal($event,1)">+1</button>
+            <button v-on:click="addAnimal($event,10)">+10</button>
+            <button v-on:click="addAnimal($event,100)">+100</button>
+            <button v-on:click="resetTigerCount">Reset</button>
+        </div>
+        <div id="moose">
+            <p>Moose: {{countMoose}}</p>
+            <button v-on:click="addAnimal($event,1)">+1</button>
+            <button v-on:click="addAnimal($event,10)">+10</button>
+            <button v-on:click="addAnimal($event,100)">+100</button>
+            <button v-on:click="resetMooseCount">Reset</button>
+        </div>
+        <div id="elephant">
+            <p>Elephants: {{countElephant}}</p>
+            <button v-on:click="addAnimal($event,1)">+1</button>
+            <button v-on:click="addAnimal($event,10)">+10</button>
+            <button v-on:click="addAnimal($event,100)">+100</button>
+            <button v-on:click="resetElephantCount">Reset</button>
+        </div>
     </div>
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -47,7 +68,10 @@
                     text: "data",
                     xPos:0,
                     yPos:0,
-                    count:0
+                    count:0,
+                    countTiger:0,
+                    countMoose:0,
+                    countElephant:0
                 }
             },
             methods:{
@@ -60,7 +84,26 @@
                 },
                 addCount(number){
                     this.count+=number
+                },
+                addAnimal(e,number){
+                    if(e.target.parentElement.id==="tigers"){
+                        this.countTiger+=number;
+                    } else if(e.target.parentElement.id==="moose"){
+                        this.countMoose+=number;
+                    } else{
+                        this.countElephant+=number;
+                    }                 
+                },
+                resetTigerCount(){
+                    this.countTiger=0;
+                },
+                resetMooseCount(){
+                    this.countMoose=0;
+                },
+                resetElephantCount(){
+                    this.countElephant=0;
                 }
+               
             }
         })
         app.mount('#app')
