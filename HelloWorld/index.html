@@ -62,7 +62,13 @@
         <button v-on:click="count++">Count clicks</button>
         <br/>
         
-        
+        <button v-on:click="lightOn = !lightOn">
+            Switch Light
+        </button>
+        <br/>
+        <input v-on:input="inpCount++"/>
+        <p>{{'Input events occured: '+inpCount}}</p>
+
     </div>
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -89,7 +95,9 @@
                         {name: 'Salad', url:'imageforsalad'},
                         {name: 'Cake', url:'imageforcake'}
                     ],
-                    count:0
+                    count:0,
+                    lightOn: true,
+                    inpCount:0
 
 
                 }
