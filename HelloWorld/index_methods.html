@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Methods</title>
+    <style>
+        #app > div {
+            width: 240px;
+            height: 60px;
+            background-color: lightgreen;
+            padding: 20px;
+            font-weight: bold;
+            font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1>Methods</h1>
+    <div id="app">
+        <div v-on:click="writeText">{{text}}</div>
+    
+
+        <p>Move the mouse pointer over the box below:</p>
+        <div 
+            v-on:mousemove="mousePos"
+            v-bind:style="{backgroundColor:'hsl('+xPos+', 60%, 60%)'}">
+            <span>xPos:{{xPos}}</span>
+            <br/>
+            <span>xPos:{{yPos}}</span>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const app = Vue.createApp({
+            data(){
+                return {
+                    text: "data",
+                    xPos:0,
+                    yPos:0
+                }
+            },
+            methods:{
+                writeText(){
+                    this.text = 'Hello World - methods property'
+                },
+                mousePos(event){
+                    this.xPos=event.offsetX
+                    this.yPos=event.offsetY
+                }
+            }
+        })
+        app.mount('#app')
+
+    </script>
+</body>
+</html>
