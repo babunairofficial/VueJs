@@ -10,6 +10,10 @@
             background-color: rgb(255, 202, 202);
             font-weight: bold;
         }
+        #itemFound li{
+            text-decoration: line-through;
+            background-color: grey;
+        }
 
     </style>
 
@@ -31,10 +35,31 @@
             <button type="submit">add item</button>
         </form>
 
-        <p>Shopping list:</p>
-        <ul>
-            <li v-for="item in shoppingList" v-bind:class="{impClass:item.important}">{{item.name}}, {{item.number}}</li>
-        </ul>
+        <div>
+            <p>Shopping list:</p>
+            <ul id="itemToFind">
+                <li 
+                    v-for="item in shoppingList" 
+                    v-bind:class="{impClass:item.important}" 
+                    v-on:click="item.found =!item.found"
+                    v-show="!item.found"
+                    >
+                        {{item.name}}, {{item.number}}
+                    </li>
+            </ul>
+
+            <ul id="itemFound">
+                <li 
+                    v-for="item in shoppingList" 
+                    v-bind:class="{impClass:item.important}" 
+                    v-on:click="item.found =!item.found"
+                    v-show="item.found"
+                    >
+                        {{item.name}}, {{item.number}}
+                    </li>
+            </ul>
+        </div>
+        
     </div>
     
 
@@ -52,7 +77,7 @@
                             number:5,
                             important:false                            
                         }
-                      ]
+                    ]                    
                 }
             },
 
@@ -61,7 +86,8 @@
                     let item= {
                         name: this.itemName,
                         number: this.itemNumber,
-                        important: this.itemImportant
+                        important: this.itemImportant,
+                        found:false
                     }
                     this.shoppingList.push(item)
                     this.itemName=null
