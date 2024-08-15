@@ -1,19 +1,23 @@
 <template>
-    <div v-on:click="counter">
-        <h2>{{ name }}</h2>
-        <p>{{ message }}</p>
+    <div v-on:click="counter" >
+        <h2>{{ foodName }}</h2>
+        <img src="" v-show="isFavourite">
+        <p>{{ foodDesc }}</p>
         <p id="red">This item has been clicked {{ ctr }} times.</p>
     </div>
 </template>
 
 <script>
     export default{
+        props:[
+            'foodName',
+            'foodDesc',
+            'isFavourite'
+        ],
         data(){
-            return {
-                name: 'Apples',
-                message: 'I like apples',
+            return{
                 ctr:0
-            }
+            }            
         },
         methods:{
             counter(){
