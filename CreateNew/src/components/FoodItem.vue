@@ -9,11 +9,17 @@
 
 <script>
     export default{
-        props:[
-            'foodName',
-            'foodDesc',
-            'isFavourite'
-        ],
+        // props:[
+        //     'foodName',
+        //     'foodDesc',
+        //     'isFavourite'
+        // ],
+
+        props:{
+            foodName: String,
+            foodDesc: String,
+            isFavourite: Boolean
+        },
         data(){
             return{
                 ctr:0
