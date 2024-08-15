@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant order</title>
+    
+    <style>    
+    
+    </style>
+
+</head>
+<body>
+    <div id="app">
+        <form v-on:submit.prevent="addItem">
+            <p>Order Here:</p>
+            <p id="selectItem">
+                <input type="radio" required value="Drink" v-model="itemType" />
+                    Drink
+            </p>
+            <p>
+                <input type="radio" required value="Desert" v-model="itemType" />
+                    Desert
+            </p>
+            
+            <p v-show="itemType">
+                <select required v-model="itemName" >
+                    <option value="" selected disabled>Select Item</option>
+                    <option v-for="item in listItems" v-bind:value="item.name" v-show="item.type===itemType">{{item.name}}</option>
+                </select>
+            </p>
+
+            <p v-show="itemName">
+                <input type="number" placeholder="How many?" v-model="itemNumber" required />
+            </p>
+            <button type="submit">add item</button>
+        </form>
+        
+        <div>
+            <h4>Your order is:</h4>
+            <ul id="toOrder">
+                <li v-for="item in order">{{item.name}},{{item.number}}</li>
+            </ul>
+        </div>
+        
+        
+    </div>
+    
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const app = Vue.createApp({
+            data(){
+                return{
+                    itemType:'',
+                    itemName:'',
+                    itemNumber:0,
+                    listItems:[
+                        {name:'Biryani', type:'Dinner'},
+                        {name:'Paneer Paratha', type:'Dinner'},
+                        {name:'Masala Dosa', type:'Dinner'},
+                        {name:'Pizza', type:'Dinner'},
+                        {name:'Water', type:'Drink'},
+                        {name:'Mango Juice', type:'Drink'},
+                        {name:'Coke', type:'Drink'},
+                        {name:'Lemonade', type:'Drink'},
+                        {name:'Mishti Doi', type:'Desert'},
+                        {name:'Rasagulla', type:'Desert'},
+                        {name:'Gulab Jamun', type:'Desert'},
+                        {name:'Icecream', type:'Desert'},
+
+                    ],
+                    order:[]                    
+                               
+                }
+            },
+
+            methods:{
+                addItem(){
+                    let item = {
+                        name: this.itemName,
+                        number: this.itemNumber
+                    }
+                    this.order.push(item)
+                    this.itemType=''
+                    this.itemName=''
+                    this.itemNumber=''                    
+                }
+        }
+        })
+
+        app.mount('#app')
+    </script>
+</body>
+</html>
