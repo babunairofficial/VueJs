@@ -1,9 +1,16 @@
 <script>
+export default{
+  data(){
+    return{
+      message: 'This is some Text'
+    };
+  }
+}
 
 </script>
 
 <template>
-  <h1>Hello World! This is a new Vue project</h1>
+  <h1>{{message}}</h1>
   
 </template>
 
